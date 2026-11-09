@@ -1,0 +1,18 @@
+package: community.lazycat.app.gjgjxweb
+name: 搞机工具箱 Web
+description: "WebADB Android 玩机工具：浏览器里完成 APK 安装、文件推送、系统调节与 ADB 终端，USB 连接免安装使用。"
+version: 0.1.0
+min_os_version: "1.5.0"
+homepage: https://github.com/CzJam/gjgjxweb
+author: 晨钟酱Official (CzJam)
+license: GPL-3.0
+permissions:
+  required:
+    - net.internet
+locales:
+  zh:
+    name: 搞机工具箱 Web
+    description: WebADB Android 玩机工具：浏览器里完成 APK 安装、文件推送、系统调节与 ADB 终端，USB 连接免安装使用。
+  en:
+    name: GJGJX Toolbox Web
+    description: WebADB toolbox for Android - install APKs, push files, tweak system settings and use an ADB terminal right in the browser.

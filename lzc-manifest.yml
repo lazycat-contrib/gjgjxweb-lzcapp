@@ -1,0 +1,36 @@
+application:
+  subdomain: gjgjxweb
+  multi_instance: false
+  # 纯本地 WebADB 工具，无任何账号体系（shimmy 判例）：平台入口鉴权兜底。
+  upstreams:
+    - location: /
+      backend: http://gjgjxweb:8080/
+services:
+  gjgjxweb:
+    # Built from source (CzJam/gjgjxweb master): upstream ships no image.
+    # server.cjs binds 127.0.0.1 upstream; the embedded Dockerfile sed-writes
+    # 0.0.0.0 so the platform reverse proxy can reach it.
+    image: embed:gjgjxweb
+    environment:
+      - PORT=8080
+usage: |
+  搞机工具箱 Web 是一个跑在浏览器里的 Android 玩机工具（WebADB）：
+  用 USB 数据线连接手机后，可以完成 APK 安装、文件推送、截图、系统参数
+  调节（分辨率/DPI/动画倍率）、应用批量管理和 ADB 终端操作。
+
+  使用方法：
+    - 手机开启「开发者选项」和「USB 调试」，用 USB 数据线连接到
+      懒猫设备的 USB 口。
+    - 打开应用入口，点击连接设备，在浏览器弹出的 USB 授权框里
+      选择你的手机并允许授权。
+    - 功能是否生效取决于手机的 Android 版本、ROM 与 ADB 权限。
+
+  说明：
+    - 本应用是纯本地工具：所有数据只在浏览器与手机之间流转，
+      不经过任何第三方服务器；无账号体系，入口由平台鉴权保护。
+    - USB 连接需要浏览器的 WebUSB 权限（平台入口为 HTTPS，满足条件）。
+      建议使用 Chrome/Edge 等 Chromium 内核浏览器。
+    - 「重启至 Bootloader/Fastboot/Recovery」等按钮只发送重启命令，
+      本工具不提供 Fastboot 刷机。
+    - 基于 AGPL-3.0 开源（含 Tango、xterm.js 第三方组件许可，均随包分发）。
+    - 未做实机验证。
